@@ -1,0 +1,7 @@
+
+INSERT INTO people (id, name) VALUES (20, 'fuyaoz');
+
+INSERT INTO orders (id, name, order_date) VALUES (4, 'my order', '2011-1-1');
+
+INSERT INTO people_dept (id, people_id, dept_id)
+VALUES (18, 22, 23);

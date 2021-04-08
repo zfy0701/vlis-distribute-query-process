@@ -1,0 +1,64 @@
+INSERT INTO customers (cust_id, first_name, last_name) VALUES(1,'Jacklyn','Williams');
+
+INSERT INTO customers (cust_id, first_name, last_name) VALUES(2,'Justin','Lee');
+
+INSERT INTO customers (cust_id, first_name, last_name) VALUES(196,'Samuel','Wilson');
+
+INSERT INTO customers (cust_id, first_name, last_name) VALUES(197,'Kyle','Smith');
+
+INSERT INTO item (item_id, cost, name, description ) VALUES (1,13.99,'Butter', 'Really good Butter'); 
+
+INSERT INTO item (item_id, cost, name, description ) VALUES (2,19.79,'Cheese','Awesomest Cottage cheese'); 	
+	
+INSERT INTO purchases (purchase_id, cust_id, item_id, quantity) VALUES 	(1,2,1,4);
+
+INSERT INTO purchases (purchase_id, cust_id, item_id, quantity) VALUES 	(2,196,2,3);
+
+INSERT INTO purchases (purchase_id, cust_id, item_id, quantity) VALUES 	(3,197,2,4);
+
+INSERT INTO purchases (purchase_id, cust_id, item_id, quantity) VALUES 	(4,1,1,5);
+
+Select item_id, cost, name, description from item;
+-- name	cost	item_id	description	
+-- Butter	13.99	1	Really good Butter
+-- Cheese	19.79	2	Awesomest Cottage cheese
+
+Select item_id, cost, name from item;
+-- name	cost	item_id
+-- Butter	13.99	1
+-- Cheese	19.79	2
+
+Select cust_id, first_name, last_name from customers;
+-- cust_id	first_name	last_name	
+-- 196	Samuel	Wilson
+-- 1	Jacklyn	Williams
+-- 197	Kyle	Smith
+-- 2	Justin	Lee
+
+Select purchase_id, cust_id, item_id, quantity from purchases;
+-- cust_id	purchase_id	item_id	quantity	
+-- 1	4	1	5
+-- 2	1	1	4
+-- 196	2	2	3
+-- 197	3	2	4
+
+Select customers.first_name, purchases.item_id 
+from customers, purchases
+where customers.cust_id = purchases.cust_id and customers.cust_id < 100;
+-- first_name	item_id	
+-- Jacklyn	1
+-- Justin	1
+
+Select customers.first_name, purchases.quantity, item.item_id 
+from customers, purchases, item 
+where customers.cust_id = purchases.cust_id and purchases.item_id = item.item_id and customers.cust_id > 100;
+-- first_name	quantity	item_id	
+-- Kyle	4	2
+-- Samuel	3	2
+
+select purchases.purchase_id
+from purchases
+where purchases.cust_id >= 100;
+
+select purchases.quantity from purchases;
+

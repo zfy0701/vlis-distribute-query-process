@@ -1,0 +1,7 @@
+select item.item_id, item.cost, item.name from item
+
+item0[T1]: {item.item_id, item.name, item.cost, } 1
+
+item_id	name	cost	
+1	Butter	13.99
+2	Cheese	19.79

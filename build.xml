@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="vlis" default="run" basedir=".">
+	<property name="dest" value="build" />
+
+	<target name="init">
+		<mkdir dir="${dest}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="${dest}" />
+
+	</target>
+
+	<target name="run" depends="compile">
+		<java classname="edu.cmu.vlis.distributed.Main" classpath="${dest}">
+			<arg value="${dest}"/>
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="${dest}" />
+	</target>
+</project>

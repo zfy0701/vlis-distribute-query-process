@@ -1,0 +1,30 @@
+select people.name
+from people;
+
+select people.name, dept.name
+from people, dept
+where people.id = dept.peopleid;
+
+select x.id
+from x, y, z 
+where x.id = y.id and x.id = z.id and x.c > 'adf';
+
+select x.id
+from x, y, z 
+where x.id = y.id and y.id = z.id;
+
+select x.id
+from x, y, z 
+where x.id = z.id and y.id = z.id;
+
+select a.id
+from a, b, c, d
+where a.id = b.id and c.id = d.id and a.id = c.id;
+
+select a.id
+from people a, dept b, salary c, inf d
+where a.id = b.id and c.id = d.id and a.id = c.id and b.id = d.id and a.id > 10 and b.id < 100;
+
+select a.id
+from people a, people b
+where a.id = b.brotherid and a.age > 10;

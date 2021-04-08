@@ -1,0 +1,113 @@
+<Description>
+
+	<Machines>
+		<Machine>
+			<ID>0</ID>
+			<ConnectionString>jdbc:postgresql://localhost/PA4_0</ConnectionString>
+			<UserName>vlis</UserName>
+			<Password>vlis</Password>
+		</Machine>
+		
+		<Machine>
+			<ID>1</ID>
+			<ConnectionString>jdbc:postgresql://localhost/PA4_1</ConnectionString>
+			<UserName>vlis</UserName>
+			<Password>vlis</Password>
+		</Machine>
+		
+		<Machine>
+			<ID>2</ID>
+			<ConnectionString>jdbc:postgresql://localhost/PA4_2</ConnectionString>
+			<UserName>vlis</UserName>
+			<Password>vlis</Password>
+		</Machine>
+		
+		<CoordinateMachine>
+			<ConnectionString>jdbc:postgresql://localhost/PA4_3</ConnectionString>
+			<UserName>vlis</UserName>
+			<Password>vlis</Password>
+		</CoordinateMachine>
+		
+  </Machines>
+
+	<Tables>
+		 <Table name = "item">
+		    <Schema>
+		    <attribute> item_id int </attribute>
+		    <attribute> cost numeric(5,2) </attribute>
+		    <attribute> name varchar(30) </attribute>
+		    <attribute> description varchar(1000) </attribute>
+		    </Schema>
+		    
+		    <Fragments type = "Vertical" key  = "item.item_id">
+				<Fragment name = "item1"> 
+					<MachineID>0</MachineID>
+				    <Values> item.item_id , item.name , item.cost </Values>
+				</Fragment>
+				
+				<Fragment name = "item2"> 
+					 <MachineID>1</MachineID>
+					 <Values> item.item_id , item.description </Values>
+				</Fragment>
+			</Fragments>
+		    
+		 </Table>
+		 
+		 <Table name = "customers">
+		    <Schema>
+		    <attribute> cust_id int </attribute>
+		    <attribute> first_name varchar(20) </attribute>
+		    <attribute> last_name  varchar(20) </attribute>
+		    </Schema>
+		    
+			<Fragments type = "Horizontal">
+                    <Fragment name = "customers1">
+                    	<MachineID>0</MachineID>
+                   		<Values> customers.cust_id &lt; 100 </Values>                    
+                     </Fragment>
+                                
+                     <Fragment name = "customers2">
+                          <MachineID>1</MachineID>
+                          <Values> customers.cust_id &gt;= 100 </Values>
+                     </Fragment>
+             </Fragments>
+		    
+		 </Table>
+		 
+		 <Table name = "purchases">
+		    <Schema>
+		    <attribute> purchase_id int </attribute>
+		    <attribute> cust_id int </attribute>
+		    <attribute> item_id int </attribute>
+			<attribute> quantity int </attribute>
+		    </Schema>
+		    
+		    <Fragments type = "Vertical" key  = "purchases.purchase_id">
+				<Fragment>
+					<Values> purchases.purchase_id , purchases.cust_id </Values>
+					<Fragments type = "Horizontal">
+						<Fragment name = "purchases1">
+							<MachineID>0</MachineID>
+							<Values> purchases.cust_id &lt; 100 </Values>                    
+						 </Fragment>
+									
+						 <Fragment name = "purchases2">
+							  <MachineID>1</MachineID>
+							  <Values> purchases.cust_id &gt;= 100 </Values>
+						 </Fragment>
+					 </Fragments>
+                 </Fragment>
+                 
+                 
+				<Fragment name = "purchases3"> 
+					 <MachineID>2</MachineID>
+					  <Values> purchases.purchase_id , purchases.item_id, purchases.quantity</Values>
+				</Fragment>
+			</Fragments>
+		    
+		 </Table>
+		 
+
+	</Tables>
+	
+</Description>

@@ -1,0 +1,9 @@
+select item.item_id, item.cost, item.name, item.description from item
+
+Join[T16]: item.item_id = item.item_id
+  item0[T1]: {item.item_id, item.name, item.cost, } 1
+  item1[T2]: {item.item_id, item.description, } 1
+
+item_id	name	cost	description	
+1	Butter	13.99	Really good Butter
+2	Cheese	19.79	Awesomest Cottage cheese

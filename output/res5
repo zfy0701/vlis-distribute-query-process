@@ -1,0 +1,33 @@
+select customers.first_name, purchases.quantity, item.item_id from customers, purchases, item where ((customers.cust_id = purchases.cust_id) AND (purchases.item_id = item.item_id) AND (customers.cust_id > 100))
+
+Union[T132]
+  Projection[T147]: customers.first_name, purchases.quantity, item.item_id, 
+    Join[T138]: purchases.item_id = item.item_id
+      Projection[T168]: customers.first_name, purchases.quantity, customers.cust_id, purchases.item_id, 
+        Join[T128]: customers.cust_id = purchases.cust_id
+          Projection[T170]: customers.first_name, customers.cust_id, 
+            Selection[T195]: (customers.cust_id > 100)
+              customers1[T126]: {customers.cust_id, customers.first_name, customers.last_name, } (customers.cust_id >= 100)
+          Projection[T171]: purchases.quantity, purchases.item_id, purchases.cust_id, 
+            Join[T127]: purchases.purchase_id = purchases.purchase_id
+              purchases0[T9]: {purchases.purchase_id, purchases.cust_id, } (purchases.cust_id < 100)
+              purchases2[T115]: {purchases.purchase_id, purchases.item_id, purchases.quantity, } 1
+      Projection[T175]: item.item_id, 
+        item1[T2]: {item.item_id, item.description, } 1
+  Projection[T148]: customers.first_name, purchases.quantity, item.item_id, 
+    Join[T140]: purchases.item_id = item.item_id
+      Projection[T177]: customers.first_name, purchases.quantity, customers.cust_id, purchases.item_id, 
+        Join[T131]: customers.cust_id = purchases.cust_id
+          Projection[T179]: customers.first_name, customers.cust_id, 
+            Selection[T199]: (customers.cust_id > 100)
+              customers1[T129]: {customers.cust_id, customers.first_name, customers.last_name, } (customers.cust_id >= 100)
+          Projection[T180]: purchases.quantity, purchases.item_id, purchases.cust_id, 
+            Join[T130]: purchases.purchase_id = purchases.purchase_id
+              purchases1[T10]: {purchases.purchase_id, purchases.cust_id, } (purchases.cust_id >= 100)
+              purchases2[T117]: {purchases.purchase_id, purchases.item_id, purchases.quantity, } 1
+      Projection[T184]: item.item_id, 
+        item1[T2]: {item.item_id, item.description, } 1
+
+first_name	quantity	item_id	
+Samuel	3	2
+Kyle	4	2

@@ -1,0 +1,15 @@
+select purchases.purchase_id, purchases.cust_id, purchases.item_id, purchases.quantity from purchases
+
+Union[T32]
+  Join[T34]: purchases.purchase_id = purchases.purchase_id
+    purchases0[T9]: {purchases.purchase_id, purchases.cust_id, } (purchases.cust_id < 100)
+    purchases2[T33]: {purchases.purchase_id, purchases.item_id, purchases.quantity, } 1
+  Join[T36]: purchases.purchase_id = purchases.purchase_id
+    purchases1[T10]: {purchases.purchase_id, purchases.cust_id, } (purchases.cust_id >= 100)
+    purchases2[T35]: {purchases.purchase_id, purchases.item_id, purchases.quantity, } 1
+
+purchase_id	cust_id	item_id	quantity	
+1	2	1	4
+4	1	1	5
+2	196	2	3
+3	197	2	4

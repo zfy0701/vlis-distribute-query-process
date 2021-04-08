@@ -1,0 +1,24 @@
+
+-- both horizontal, should have only on join as result
+select people.id
+from people, dept
+where people.id = dept.people_id and people.id > 14 and dept.id < 'a';
+
+-- vertical, should only use one half
+select orders.name
+from orders
+where orders.id > 3;
+
+-- people horizontal, order vertical
+select people.id, orders.name, orders.order_date
+from people, orders
+where people.id = orders.people_id and people.id > 14 and orders.order_date > '2001';
+
+select people.id, dept.id, people_dept.people_id, people_dept.dept_id
+from people, dept, people_dept
+where people.id = people_dept.people_id and dept.id = people_dept.dept_id and people.id > 12 and dept.id < 'e';
+
+-- this example has type mismatch, but it really want to show that people.id > dept.id shouldn't be pushed down
+select people.id, dept.id
+from people, dept, people_dept
+where people.id = dept.id and people.id > 8 and dept.id < 'd' and people.id > dept.id;

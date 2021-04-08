@@ -1,0 +1,11 @@
+select purchases.quantity from purchases
+
+Union[T227]
+  Projection[T232]: purchases.quantity, 
+    purchases2[T228]: {purchases.purchase_id, purchases.item_id, purchases.quantity, } 1
+
+quantity	
+4
+3
+4
+5

@@ -1,0 +1,11 @@
+select customers.cust_id, customers.first_name, customers.last_name from customers
+
+Union[T26]
+  customers0[T5]: {customers.cust_id, customers.first_name, customers.last_name, } (customers.cust_id < 100)
+  customers1[T6]: {customers.cust_id, customers.first_name, customers.last_name, } (customers.cust_id >= 100)
+
+cust_id	first_name	last_name	
+1	Jacklyn	Williams
+2	Justin	Lee
+196	Samuel	Wilson
+197	Kyle	Smith

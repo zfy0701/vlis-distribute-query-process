@@ -1,0 +1,9 @@
+select purchases.purchase_id from purchases where (purchases.cust_id >= 100)
+
+Projection[T213]: purchases.purchase_id, 
+  Selection[T222]: (purchases.cust_id >= 100)
+    purchases1[T10]: {purchases.purchase_id, purchases.cust_id, } (purchases.cust_id >= 100)
+
+purchase_id	
+2
+3

@@ -1,0 +1,6 @@
+syntax:glob
+build/*
+bin/*
+
+syntax: regexp
+^src/edu/cmu/vlis/distributed/Configuration\.java$

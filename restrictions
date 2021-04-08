@@ -1,0 +1,7 @@
+no subquery
+no "or", "in", only "and"
+for condition, you can write "a.id > 4" or "b.age > c.age", but no "4 > a.id", so constant number or string cannot in leftside
+no nature join
+only join on single field
+only join like "a.id = b.id"
+insert need write all column names

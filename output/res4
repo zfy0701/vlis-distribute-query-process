@@ -1,0 +1,27 @@
+select customers.first_name, purchases.item_id from customers, purchases where ((customers.cust_id = purchases.cust_id) AND (customers.cust_id < 100))
+
+Union[T55]
+  Projection[T72]: customers.first_name, purchases.item_id, 
+    Join[T58]: customers.cust_id = purchases.cust_id
+      Projection[T77]: customers.first_name, customers.cust_id, 
+        Selection[T96]: (customers.cust_id < 100)
+          customers0[T56]: {customers.cust_id, customers.first_name, customers.last_name, } (customers.cust_id < 100)
+      Projection[T78]: purchases.item_id, purchases.cust_id, 
+        Join[T57]: purchases.purchase_id = purchases.purchase_id
+          purchases0[T9]: {purchases.purchase_id, purchases.cust_id, } (purchases.cust_id < 100)
+          Projection[T80]: purchases.item_id, purchases.purchase_id, 
+            purchases2[T51]: {purchases.purchase_id, purchases.item_id, purchases.quantity, } 1
+  Projection[T73]: customers.first_name, purchases.item_id, 
+    Join[T61]: customers.cust_id = purchases.cust_id
+      Projection[T82]: customers.first_name, customers.cust_id, 
+        Selection[T98]: (customers.cust_id < 100)
+          customers0[T59]: {customers.cust_id, customers.first_name, customers.last_name, } (customers.cust_id < 100)
+      Projection[T83]: purchases.item_id, purchases.cust_id, 
+        Join[T60]: purchases.purchase_id = purchases.purchase_id
+          purchases1[T10]: {purchases.purchase_id, purchases.cust_id, } (purchases.cust_id >= 100)
+          Projection[T85]: purchases.item_id, purchases.purchase_id, 
+            purchases2[T53]: {purchases.purchase_id, purchases.item_id, purchases.quantity, } 1
+
+first_name	item_id	
+Justin	1
+Jacklyn	1
